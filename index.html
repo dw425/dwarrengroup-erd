@@ -60,6 +60,21 @@
   }
   table.fks td { padding:5px 10px; border-bottom:1px solid #f1f5f9; }
   table.fks code { font:11.5px ui-monospace, SFMono-Regular, Menlo, monospace; }
+  table.vol { border-collapse:collapse; width:100%; font-size:12.5px; }
+  table.vol th {
+    text-align:left; font-weight:600; color:var(--muted); font-size:11px;
+    text-transform:uppercase; letter-spacing:.04em; padding:0 10px 6px;
+    border-bottom:1px solid var(--line);
+  }
+  table.vol td { padding:5px 10px; border-bottom:1px solid #f1f5f9; }
+  table.vol code { font:11.5px ui-monospace, SFMono-Regular, Menlo, monospace; }
+  table.vol .num { text-align:right; font-variant-numeric:tabular-nums; }
+  .ok, .bad, .na {
+    font-size:11px; font-weight:600; padding:1px 7px; border-radius:999px;
+  }
+  .ok  { background:#dcfce7; color:#14532d; }
+  .bad { background:#fee2e2; color:#7f1d1d; }
+  .na  { background:#f1f5f9; color:#475569; font-weight:500; }
   .dot {
     display:inline-block; width:8px; height:8px; border-radius:50%;
     margin-right:7px; vertical-align:middle;
@@ -99,6 +114,7 @@
       <li><b>3</b> fact tables</li>
       <li><b>15</b> foreign keys</li>
       <li>0 circular references</li>
+      <li><b>161</b> rows loaded</li>
       <li><b>PK</b> primary key &middot; <b>FK</b> foreign key &middot; <b>DD</b> degenerate dimension</li>
     </ul>
   </header>
@@ -494,6 +510,31 @@
 <tr data-a="DimAccount" data-b="FactSubscription"><td><span class="dot" style="background:#15803d"></span><code>FK_Sub_Account</code></td><td><code>FactSubscription.AccountID</code></td><td><code>DimAccount.AccountID</code></td></tr>
 <tr data-a="DimPlan" data-b="FactSubscription"><td><span class="dot" style="background:#be185d"></span><code>FK_Sub_Plan</code></td><td><code>FactSubscription.PlanID</code></td><td><code>DimPlan.PlanID</code></td></tr>
 <tr data-a="DimPlan" data-b="FactSubscription"><td><span class="dot" style="background:#be185d"></span><code>FK_Sub_PrevPlan</code></td><td><code>FactSubscription.PrevPlanID</code></td><td><code>DimPlan.PlanID</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel break">
+    <h2>Data volumes</h2>
+    <p class="hint">The assignment sets the load: 10 rows in every dimension
+      table and 20&ndash;50 in every transactional table. The data is laid out
+      by hand to stay analytically useful at that size &mdash; the window
+      crosses a month boundary, sessions cluster onto nine days, and the
+      payments that trip the fraud view are planted deliberately.</p>
+    <table class="vol">
+      <thead><tr><th>Table</th><th>Kind</th><th class="num">Rows</th>
+        <th class="num">Required</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td><code>DimAccount</code></td><td>dimension</td><td class="num">10</td><td class="num">10</td><td><span class="ok">meets</span></td></tr>
+<tr><td><code>DimCampaign</code></td><td>dimension</td><td class="num">10</td><td class="num">10</td><td><span class="ok">meets</span></td></tr>
+<tr><td><code>DimGeography</code></td><td>dimension</td><td class="num">10</td><td class="num">10</td><td><span class="ok">meets</span></td></tr>
+<tr><td><code>DimPlan</code></td><td>dimension</td><td class="num">10</td><td class="num">10</td><td><span class="ok">meets</span></td></tr>
+<tr><td><code>DimProduct</code></td><td>dimension</td><td class="num">10</td><td class="num">10</td><td><span class="ok">meets</span></td></tr>
+<tr><td><code>DimUser</code></td><td>dimension</td><td class="num">10</td><td class="num">10</td><td><span class="ok">meets</span></td></tr>
+<tr><td><code>DimPlanAudit</code></td><td>audit</td><td class="num">0</td><td class="num">n/a</td><td><span class="na">trigger-written</span></td></tr>
+<tr><td><code>FactPayment</code></td><td>transactional</td><td class="num">30</td><td class="num">20–50</td><td><span class="ok">meets</span></td></tr>
+<tr><td><code>FactSubscription</code></td><td>transactional</td><td class="num">23</td><td class="num">20–50</td><td><span class="ok">meets</span></td></tr>
+<tr><td><code>FactUserEvent</code></td><td>transactional</td><td class="num">48</td><td class="num">20–50</td><td><span class="ok">meets</span></td></tr>
       </tbody>
     </table>
   </div>

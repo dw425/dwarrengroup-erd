@@ -33,6 +33,10 @@ Hover any table to isolate its relationships — 15 foreign keys crossing one
 canvas is unreadable otherwise. Hovering a row in the foreign-key list does the
 same thing. Line colour follows the parent table.
 
+A **Data volumes** panel below the foreign-key list checks each table's row
+count against what the assignment requires, so the load is verifiable on the
+page rather than taken on trust.
+
 The page is a single self-contained file. No build step, no dependencies, no
 network calls — the CSS, the SVG and the script are all inline.
 
