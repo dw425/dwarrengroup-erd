@@ -9,12 +9,14 @@ at Arizona State University.
 ## What it shows
 
 10 tables — 6 dimensions, 3 fact tables, 1 audit table — joined by 15 foreign
-keys, with no circular references.
+keys, with no circular references. Every dimension holds 10 rows and every
+fact table 20–50, which is what the assignment asks a submitted script to
+carry; the schema itself is designed for 100,000 users.
 
 | | |
 |---|---|
 | **Dimensions** | `DimGeography`, `DimUser`, `DimAccount`, `DimPlan`, `DimProduct`, `DimCampaign` |
-| **Facts** | `FactUserEvent` (one player action), `FactPayment` (one transaction), `FactSubscription` (one lifecycle change) |
+| **Facts** | `FactUserEvent` (one player action, 48 rows), `FactPayment` (one transaction, 30 rows), `FactSubscription` (one lifecycle change, 23 rows) |
 | **Audit** | `DimPlanAudit`, written only by a trigger |
 
 `DimGeography` is a role-playing dimension referenced five times — a user's
