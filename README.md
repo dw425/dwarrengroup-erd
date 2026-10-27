@@ -1,10 +1,14 @@
-# DWarrenGroup — Entity Relationship Diagram
+# E & D Group — Entity Relationship Diagram
 
 An interactive ERD for a star-schema analytics database behind an online
 free-to-play game. Built for IFT 530: Advanced Database Management Systems
 at Arizona State University.
 
 **[View the diagram →](https://dw425.github.io/dwarrengroup-erd/)**
+
+The full project — SQL script, documents and design spec — lives at
+**[dw425/e-d-group-ift530](https://github.com/dw425/e-d-group-ift530)**,
+published at <https://dw425.github.io/e-d-group-ift530/>.
 
 ## What it shows
 
